@@ -18,6 +18,7 @@ type HangmanWordProps = {
           fontWeight: "bold",
           textTransform: "uppercase",
           fontFamily: "monospace",
+          marginBottom:"0.3em",
         }}
       >
         {wordToGuess.split("").map((letter, index) => (

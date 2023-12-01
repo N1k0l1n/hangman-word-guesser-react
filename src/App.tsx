@@ -63,20 +63,55 @@ function App() {
     }
   }, [])
 
+  const resetGame = () => {
+    setGuessedLetters([])
+    setWordToGuess(getWord())
+  }
+
   return (
     <div
       style={{
-        maxWidth: "800px",
+        maxWidth: "70vw",
         display: "flex",
         flexDirection: "column",
-        gap: "2rem",
+        gap: "0.05rem",
         margin: "0 auto",
         alignItems: "center",
+        height: "100vh",
+        justifyContent: "center",
       }}
     >
-      <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "Winner! - Refresh to try again"}
-        {isLoser && "Nice Try - Refresh to try again"}
+      <div style={{ fontSize: "1.5rem", marginBottom: "0.05rem" }}>
+        {isWinner && (
+          <p>
+            Winner! -{" "}
+            <button
+              style={{
+                padding: "0.3rem 0.6rem",
+                fontSize: "1rem",
+                cursor: "pointer",
+              }}
+              onClick={resetGame}
+            >
+              Play Again
+            </button>
+          </p>
+        )}
+        {isLoser && (
+          <p>
+            Nice Try -{" "}
+            <button
+              style={{
+                padding: "0.3rem 0.6rem",
+                fontSize: "1rem",
+                cursor: "pointer",
+              }}
+              onClick={resetGame}
+            >
+              Try Again
+            </button>
+          </p>
+        )}
       </div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
